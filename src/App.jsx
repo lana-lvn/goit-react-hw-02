@@ -1,35 +1,48 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
+import Description from './components/Description/Description.jsx'
+import Options from './components/Options/Options.jsx'
+import Feedback from './components/Feedback/Feedback.jsx'
+import { useState } from 'react'
 
-function App() {
-  const [count, setCount] = useState(0)
 
-  return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+
+const App = () => {
+  
+  const [feedbackTypes, setFeedbackType] = useState({
+	good: 0,
+	neutral: 0,
+	bad: 0
+}
+  );
+
+  const updateFeedback = feedbackType => { 
+    setFeedbackType(prevState => (
+      {
+        ...prevState,
+        [feedbackType]: prevState[feedbackType] + 1
+      }
+    ));
+  };
+
+  
+  const resetBtn = () => {
+    setFeedbackType({
+      good: 0,
+      neutral: 0,
+      bad: 0
+    });
+  };
+
+  const totalFeedback = feedbackTypes.good + feedbackTypes.neutral + feedbackTypes.bad;
+  const positive = Math.round((feedbackTypes.good / totalFeedback) * 100);
+
+
+  return <>
+    <Description />
+    <Options updateFeedback={updateFeedback} onReset={resetBtn} />
+    <Feedback feedbackTypes={feedbackTypes} totalFeedback={totalFeedback} positive={positive} />
+  </>;
+  
 }
 
 export default App
