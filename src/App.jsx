@@ -49,7 +49,7 @@ const App = () => {
   return <div className="wrapper">
     <Description />
     <Options updateFeedback={updateFeedback} onReset={resetBtn} totalFeedback={totalFeedback} />
-    {totalFeedback > 0 ? (<Feedback feedbackTypes={feedbackTypes} totalFeedback={totalFeedback} positive={positive} />) : (<p>No feedback yet</p>) }
+    {totalFeedback > 0 ? (<Feedback feedbackTypes={feedbackTypes} totalFeedback={totalFeedback} positive={positive} />) : (<p className="text">No feedback yet</p>) }
   </div>;
   
 }
