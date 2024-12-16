@@ -1,0 +1,29 @@
+.wrap {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
+
+.btn {
+  align-items: center;
+  background-color: #d9af68;
+  border: 2px solid #111;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #111;
+  cursor: pointer;
+  display: flex;
+  height: 48px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background-color: #e8d2ac;
+}
