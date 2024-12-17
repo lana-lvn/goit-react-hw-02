@@ -2,6 +2,7 @@ import './App.css'
 import Description from './components/Description/Description.jsx'
 import Options from './components/Options/Options.jsx'
 import Feedback from './components/Feedback/Feedback.jsx'
+import Notification from './components/Notification/Notification.jsx'
 import { useEffect, useState } from 'react'
 
 
@@ -49,7 +50,7 @@ const App = () => {
   return <div className="wrapper">
     <Description />
     <Options updateFeedback={updateFeedback} onReset={resetBtn} totalFeedback={totalFeedback} />
-    {totalFeedback > 0 ? (<Feedback feedbackTypes={feedbackTypes} totalFeedback={totalFeedback} positive={positive} />) : (<p className="text">No feedback yet</p>) }
+    {totalFeedback > 0 ? (<Feedback feedbackTypes={feedbackTypes} totalFeedback={totalFeedback} positive={positive} />) : (<Notification /> ) }
   </div>;
   
 }
